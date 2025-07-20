@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(240, 10%, 3.9%);
+  --muted: hsl(240, 4.8%, 95.9%);
+  --muted-foreground: hsl(240, 3.7%, 45.1%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(240, 10%, 3.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(240, 10%, 3.9%);
+  --border: hsl(240, 5.9%, 90%);
+  --input: hsl(240, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 4.8%, 95.9%);
+  --secondary-foreground: hsl(240, 5.9%, 10%);
+  --accent: hsl(240, 4.8%, 95.9%);
+  --accent-foreground: hsl(240, 5.9%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(240, 10%, 3.9%);
+  --radius: 0.5rem;
+
+  /* Snow theme colors */
+  --snow-50: hsl(210, 40%, 98%);
+  --snow-100: hsl(210, 40%, 96%);
+  --snow-200: hsl(214, 32%, 91%);
+  --snow-300: hsl(213, 27%, 84%);
+  --snow-400: hsl(215, 20%, 65%);
+  --snow-500: hsl(215, 16%, 47%);
+  --snow-600: hsl(215, 19%, 35%);
+  --snow-700: hsl(215, 25%, 27%);
+  --snow-800: hsl(217, 33%, 17%);
+  --snow-900: hsl(222, 84%, 5%);
+
+  /* Winter theme colors */
+  --winter-50: hsl(198, 100%, 97%);
+  --winter-100: hsl(198, 100%, 94%);
+  --winter-200: hsl(198, 95%, 86%);
+  --winter-300: hsl(199, 95%, 74%);
+  --winter-400: hsl(198, 93%, 60%);
+  --winter-500: hsl(199, 89%, 48%);
+  --winter-600: hsl(200, 98%, 39%);
+  --winter-700: hsl(201, 96%, 32%);
+  --winter-800: hsl(201, 90%, 27%);
+  --winter-900: hsl(202, 80%, 24%);
+
+  /* Kawaii theme colors */
+  --kawaii-50: hsl(327, 73%, 97%);
+  --kawaii-100: hsl(326, 78%, 95%);
+  --kawaii-200: hsl(326, 85%, 90%);
+  --kawaii-300: hsl(327, 87%, 81%);
+  --kawaii-400: hsl(329, 86%, 70%);
+  --kawaii-500: hsl(330, 81%, 60%);
+  --kawaii-600: hsl(333, 71%, 51%);
+  --kawaii-700: hsl(335, 78%, 42%);
+  --kawaii-800: hsl(336, 74%, 35%);
+  --kawaii-900: hsl(336, 69%, 30%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-gradient-to-br from-snow-50 via-winter-50 to-kawaii-50 text-foreground min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/25 backdrop-blur-sm border border-white/20 shadow-lg;
+  }
+
+  .cute-shadow {
+    box-shadow: 0 8px 32px rgba(14, 165, 233, 0.12);
+  }
+
+  .snowflake {
+    @apply fixed text-white/80 pointer-events-none select-none z-0;
+    top: -10px;
+    animation: snowfall 3s linear infinite;
+  }
+}
+
+@layer utilities {
+  .animate-snowfall {
+    animation: snowfall 3s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  @keyframes snowfall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+}
